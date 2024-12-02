@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { DeleteClass, GetAllClass } from "../../CRUD/class";
+import { deleteClass, getAllClass } from "../../CRUD/class";
 import { useDispatch, useSelector } from "react-redux";
 import { classDeleteData, classesData } from "../../features/classSlice";
 import "./Classes.css";
@@ -9,13 +9,13 @@ function Classes() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    GetAllClass().then((res) => {
+    getAllClass().then((res) => {
       dispatch(classesData(res.data));
     });
   }, []);
   const handleDelete = async (id) => {
     try {
-      const data = await DeleteClass(id);
+      const data = await deleteClass(id);
       if (data.status === 200) {
         dispatch(classDeleteData(id));
         alert("Delete successfully.");

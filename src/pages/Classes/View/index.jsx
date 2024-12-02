@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { GetClassById } from "../../../CRUD/class";
+import { getClassById } from "../../../CRUD/class";
 import { classData } from "../../../features/classSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,7 +10,7 @@ function View() {
   const { classId } = useParams();
   useEffect(() => {
     if (classId) {
-      GetClassById(classId).then((res) => {
+      getClassById(classId).then((res) => {
         dispatch(classData(res.data));
       });
     }

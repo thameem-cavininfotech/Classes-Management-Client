@@ -25,9 +25,12 @@ const classSlice = createSlice({
       );
       state.classesData = deleteData;
     },
+    classCreateData: (state, action) => {
+      state.classesData.unshift(action.payload);
+    },
   },
 });
 
-export const { classLoading, classesData, classData, classDeleteData } =
+export const { classLoading, classesData, classData, classDeleteData,classCreateData } =
   classSlice.actions;
 export default classSlice.reducer;
